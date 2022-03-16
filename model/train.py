@@ -30,20 +30,20 @@ def plot_history(history):
 def train():
 	model = cnn_model()
 
-	# Compile the model
+
 	model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-	# Training and validation generator
+
 	train_generator, validation_generator = prepare_generator()
 	steps_per_epoch = train_generator.n//train_generator.batch_size
 	validation_steps = validation_generator.n//validation_generator.batch_size
 
-	# Callbacks
+
 	early_stop = EarlyStopping(monitor='val_loss', patience=5, verbose=1)
 	reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=3, verbose=1)
 	callbacks = [early_stop, reduce_lr]
 
-	# Train the model
+
 	history = model.fit_generator(
 	    train_generator,
 	    steps_per_epoch=steps_per_epoch,
@@ -53,7 +53,7 @@ def train():
 	    validation_steps=validation_steps
 	)
 	
-	# Displaying curves of loss and accuracy during training
+
 	plot_history(history)
 
 

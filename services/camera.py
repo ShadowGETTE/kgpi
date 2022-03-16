@@ -6,9 +6,9 @@ from .behaviors import load_trained_model, load_face_haar_cascade
 from .constants import emotions
 
 
-# Import cascade file for facial recognition
+
 face_haar_cascade = load_face_haar_cascade()
-# Load pre-trained model
+
 model = load_trained_model()
 
 class VideoCamera(object):
@@ -40,14 +40,15 @@ class VideoCamera(object):
                     roi = img_to_array(roi)
                     roi = np.expand_dims(roi, axis=0)
 
-                    # Predict the emotion
+
                     prediction = model.predict(roi)[0]
+                    print(prediction(roi))
 
-                    # Show result
                     maxindex = int(np.argmax(prediction))
-                    cv2.putText(image, emotions[maxindex], (int(x)+10, int(y)-20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                    print(maxindex)
+                    cv2.putText(image, emotions[maxindex],  (int(x)+10, int(y)-20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
-                #image = cv2.flip(image, 1)
-                ret, jpeg = cv2.imencode('.jpg', image)
+                image = cv2.flip(image, 1)
+                ret, jpeg = cv2.imencode('.jpg', image, maxindex)
                 return jpeg.tobytes()
             self.counter += 1

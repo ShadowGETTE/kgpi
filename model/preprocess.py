@@ -1,7 +1,7 @@
 from keras.preprocessing.image import ImageDataGenerator
 
 
-# Folder of data for training and validatin
+
 train_dir = 'files/data/train'
 val_dir = 'files/data/test'
 
