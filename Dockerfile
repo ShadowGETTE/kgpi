@@ -30,8 +30,8 @@ RUN apt-get update \
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
   && pip install "poetry==$POETRY_VERSION" && poetry --version
 
-RUN apt-get install --no-install-recommends -y \
-    python3-opencv
+RUN pip install \
+    opencv-python
 
 # set work directory
 WORKDIR /code
