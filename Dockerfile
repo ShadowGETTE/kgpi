@@ -31,9 +31,7 @@ RUN apt-get update \
   && pip install "poetry==$POETRY_VERSION" && poetry --version
 
 RUN apt-get install --no-install-recommends -y \
-    ffmpeg \
-    libsm6 \
-    libxext6
+    python3-opencv
 
 # set work directory
 WORKDIR /code
