@@ -30,9 +30,11 @@ RUN apt-get update \
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
   && pip install "poetry==$POETRY_VERSION" && poetry --version
 
-RUN apt-get install -y \
+RUN apt-get update \
+  && apt-get install -y \
     libgl1-mesa-glx
-RUN apt-get install -y \
+RUN apt-get update \
+  && apt-get install -y \
     'ffmpeg' \
     'libsm6' \
     'libxext6'
