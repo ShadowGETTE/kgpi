@@ -49,5 +49,3 @@ RUN pip3 install gunicorn psycopg2
 RUN poetry install
 # copy project
 COPY . .
-
-RUN python manage.py collectstatic --noinput
