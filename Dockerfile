@@ -1,4 +1,4 @@
-FROM python:3.7.13-slim-bullseye AS development-build
+FROM python:3.7.13-bullseye AS development-build
 
 ARG DJANGO_ENV
 
