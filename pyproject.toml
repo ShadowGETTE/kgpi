@@ -48,6 +48,7 @@ typing-extensions = "3.7.4.3"
 urllib3 = "1.26.7"
 Werkzeug = "2.0.1"
 wrapt = "1.12.1"
+psycopg2 = "^2.9.3"
 
 [tool.poetry.dev-dependencies]
 
