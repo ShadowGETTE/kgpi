@@ -1,10 +1,10 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block title %}Web-камера {% endblock title %}
 
 {% block content %}
-<div class="container">
-  <h1 class="mt-2 mb-5 text-center">Анализ динамического видео, полученного с камеры</h1>
-  <img src="{% url 'predict_stream' %}" alt="" class="img-fluid rounded mx-auto d-block">
-</div>
+    <div class="container">
+        <h1 class="mt-2 mb-5 text-center">Анализ динамического видео, полученного с камеры</h1>
+        <img src="{% url 'predict_stream' %}" alt="" class="img-fluid rounded mx-auto d-block">
+    </div>
 {% endblock content %}

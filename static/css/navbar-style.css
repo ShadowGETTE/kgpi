@@ -23,15 +23,15 @@ nav .brand img {
     height: 11%;
 }
 
-nav .brand img.top{
+nav .brand img.top {
     display: block;
 }
 
-nav .brand img.scrolled{
+nav .brand img.scrolled {
     display: none;
 }
 
-nav.scrolled .brand img.scrolled{
+nav.scrolled .brand img.scrolled {
     display: block;
 }
 
@@ -47,9 +47,9 @@ nav .menu li a:hover {
     color: #e74c3c;
 }
 
-nav.scrolled  .menu li.active > a,
-nav.scrolled  .menu li a:hover {
-	color: #e74c3c;
+nav.scrolled .menu li.active > a,
+nav.scrolled .menu li a:hover {
+    color: #e74c3c;
 }
 
 nav button {
@@ -58,21 +58,21 @@ nav button {
     outline: none;
 }
 
-nav.scrolled{
+nav.scrolled {
     background: #fff;
     border-bottom: solid 1px #dfdfdf;
 }
 
-nav.scrolled .menu li a{
+nav.scrolled .menu li a {
     color: #333;
 }
 
-nav.scrolled .brand img.top{
+nav.scrolled .brand img.top {
     display: none;
 }
 
 nav.scrolled .wrap-core-nav-list,
-nav.scrolled .nav-header{
+nav.scrolled .nav-header {
     background: #fff;
 }
 
@@ -100,11 +100,11 @@ nav.scrolled .nav-header{
         color: #fff;
     }
 
-    nav.scrolled .nav-header .toggle-bar{
+    nav.scrolled .nav-header .toggle-bar {
         color: #333;
     }
 
-    .core-nav .wrap-core-nav-list{
+    .core-nav .wrap-core-nav-list {
         border-top: solid 1px rgba(255, 255, 255, 0.2);
         border-bottom: solid 1px rgba(255, 255, 255, 0.2);
     }
@@ -118,7 +118,7 @@ nav.scrolled .nav-header{
         border-bottom: none;
     }
 
-    nav.scrolled .wrap-core-nav-list{
+    nav.scrolled .wrap-core-nav-list {
         border-top: solid 1px #dfdfdf;
         border-bottom: solid 1px #dfdfdf;
     }

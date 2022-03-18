@@ -3,25 +3,25 @@
 {% block title %}Импорт изображения{% endblock title %}
 
 {% block content %}
-<div class="container">
-  <h3 class="mt-3">Анализ статичного изображения</h3>
-  <div class="custom-file mb-3">
-    <input type="file" class="custom-file-input" id="imageInput" name="filename">
-    <label class="custom-file-label" for="customFile">Выберите изображение</label>
-  </div>
-  <br>
-  <div class="loader" id="loader"></div>
-  <br>
-  <h3>Результат распознавания:</h3>
-  <img id="predictImg" src=""/ class="img-thumbnail img-responsive">
-</div>
-<div class="container">
-  <h3 class="mt-3">Графики распознавания:</h3>
-</div>
-  <p class="highcharts-description">
-  <figure class="highcharts-figure">
-  <div id="container"></div>
-</figure>
+    <div class="container">
+        <h3 class="mt-3">Анализ статичного изображения</h3>
+        <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" id="imageInput" name="filename">
+            <label class="custom-file-label" for="customFile">Выберите изображение</label>
+        </div>
+        <br>
+        <div class="loader" id="loader"></div>
+        <br>
+        <h3>Результат распознавания:</h3>
+        <img id="predictImg" src=""/ class="img-thumbnail img-responsive">
+    </div>
+    <div class="container">
+        <h3 class="mt-3">Графики распознавания:</h3>
+    </div>
+    <p class="highcharts-description">
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+    </figure>
 
 
 {% endblock content %}

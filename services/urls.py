@@ -1,13 +1,12 @@
 from django.urls import path
 
 from .views import (
-	home,
-	image_process,
-	stream_process,
-	predict_image,
-	predict_stream
+    home,
+    image_process,
+    stream_process,
+    predict_image,
+    predict_stream
 )
-
 
 urlpatterns = [
     path('', home, name='home'),
