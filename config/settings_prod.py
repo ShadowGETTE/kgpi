@@ -1,5 +1,7 @@
 import os
 
+from .settings import *
+
 DEBUG = os.environ.get("DEBUG", "true") in ["true", "on"]
 ALLOWED_HOSTS = ["*"]
 
