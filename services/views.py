@@ -9,6 +9,8 @@ from .camera import VideoCamera
 
 from asgiref.sync import async_to_sync
 
+from transform_track import VideoTransformTrack
+
 
 def home(request):
     return render(request, 'home.html')
