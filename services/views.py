@@ -2,7 +2,7 @@ from aiortc import RTCSessionDescription, RTCPeerConnection
 from aiortc.contrib.media import MediaBlackhole, MediaRelay
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse, StreamingHttpResponse
+from django.http import HttpResponse, StreamingHttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators import gzip
 
@@ -44,6 +44,7 @@ pcs = set()
 
 
 @csrf_exempt
+@require_POST
 @async_to_sync
 async def offer(request):
     json_data = json.loads(request.body)
@@ -82,7 +83,7 @@ async def offer(request):
     await pc.setRemoteDescription(rtc_session_description)
     await pc.setLocalDescription(answer)
 
-    return {"sdp": pc.localDescription.sdp, "type": pc.localDescription.type}
+    return JsonResponse({"sdp": pc.localDescription.sdp, "type": pc.localDescription.type})
 
 
 @csrf_exempt
