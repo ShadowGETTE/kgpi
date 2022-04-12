@@ -35,7 +35,7 @@ def test(request):
     return render(request, 'index.html')
 
 
-@async_to_sync()
+@async_to_sync
 async def offer(request):
     rtc_session_description = RTCSessionDescription(sdp=params.sdp, type=params.type)
 
