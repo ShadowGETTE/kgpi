@@ -5,7 +5,10 @@ from .views import (
     image_process,
     stream_process,
     predict_image,
-    predict_stream
+    predict_stream,
+
+    test,
+    offer
 )
 
 urlpatterns = [
@@ -14,4 +17,7 @@ urlpatterns = [
     path('stream/', stream_process, name='stream_process'),
     path('image/predict/', predict_image, name='predict_image'),
     path('stream/predict/', predict_stream, name='predict_stream'),
+
+    path('test/', test, name='test'),
+    path('offer/', offer, name='offer'),
 ]

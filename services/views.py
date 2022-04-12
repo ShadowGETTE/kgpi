@@ -29,6 +29,49 @@ def predict_stream(request):
         print("aborted")
 
 
+def test(request):
+    return render(request, 'index.html')
+
+
+def offer(request):
+    rtc_session_description = RTCSessionDescription(sdp=params.sdp, type=params.type)
+
+    pc = RTCPeerConnection()
+    pcs.add(pc)
+    recorder = MediaBlackhole()
+
+    relay = MediaRelay()
+
+    @pc.on("connectionstatechange")
+    async def on_connectionstatechange():
+        print("Connection state is %s" % pc.connectionState)
+        if pc.connectionState == "failed":
+            await pc.close()
+            pcs.discard(pc)
+
+    @pc.on("track")
+    def on_track(track):
+        if track.kind == "video":
+            pc.addTrack(
+                VideoTransformTrack(relay.subscribe(track), transform=params.video_transform)
+            )
+
+        @track.on("ended")
+        async def on_ended():
+            await recorder.stop()
+
+    # handle rtc_session_description
+    await pc.setRemoteDescription(rtc_session_description)
+    await recorder.start()
+
+    # send answer
+    answer = await pc.createAnswer()
+    await pc.setRemoteDescription(rtc_session_description)
+    await pc.setLocalDescription(answer)
+
+    return {"sdp": pc.localDescription.sdp, "type": pc.localDescription.type}
+
+
 @csrf_exempt
 @require_POST
 def predict_image(request):
