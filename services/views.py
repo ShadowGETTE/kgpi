@@ -7,6 +7,8 @@ from django.views.decorators import gzip
 from .utils import predict, gen
 from .camera import VideoCamera
 
+from asgiref.sync import async_to_sync
+
 
 def home(request):
     return render(request, 'home.html')
@@ -33,7 +35,8 @@ def test(request):
     return render(request, 'index.html')
 
 
-def offer(request):
+@async_to_sync()
+async def offer(request):
     rtc_session_description = RTCSessionDescription(sdp=params.sdp, type=params.type)
 
     pc = RTCPeerConnection()
