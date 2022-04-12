@@ -10,6 +10,7 @@ from .camera import VideoCamera
 from asgiref.sync import async_to_sync
 
 from transform_track import VideoTransformTrack
+import json
 
 
 def home(request):
@@ -39,7 +40,8 @@ def test(request):
 
 @async_to_sync
 async def offer(request):
-    rtc_session_description = RTCSessionDescription(sdp=params.sdp, type=params.type)
+    json_data = json.loads(request.body)
+    rtc_session_description = RTCSessionDescription(sdp=json_data['sdp'], type=json_data['type'])
 
     pc = RTCPeerConnection()
     pcs.add(pc)
@@ -58,7 +60,7 @@ async def offer(request):
     def on_track(track):
         if track.kind == "video":
             pc.addTrack(
-                VideoTransformTrack(relay.subscribe(track), transform=params.video_transform)
+                VideoTransformTrack(relay.subscribe(track), transform=json_data['video_transform'])
             )
 
         @track.on("ended")
