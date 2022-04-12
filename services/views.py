@@ -1,15 +1,17 @@
+from aiortc import RTCSessionDescription, RTCPeerConnection
+from aiortc.contrib.media import MediaBlackhole, MediaRelay
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators import gzip
 
+from .transform_track import VideoTransformTrack
 from .utils import predict, gen
 from .camera import VideoCamera
 
 from asgiref.sync import async_to_sync
 
-from transform_track import VideoTransformTrack
 import json
 
 
@@ -38,6 +40,10 @@ def test(request):
     return render(request, 'index.html')
 
 
+pcs = set()
+
+
+@csrf_exempt
 @async_to_sync
 async def offer(request):
     json_data = json.loads(request.body)

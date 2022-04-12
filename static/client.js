@@ -56,7 +56,7 @@ function negotiate() {
                 offer.sdp = sdpFilterCodec('video', codec, offer.sdp);
             }
 
-            return fetch('/offer', {
+            return fetch('/offer/', {
                 body: JSON.stringify({
                     sdp: offer.sdp,
                     type: offer.type,
