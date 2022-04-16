@@ -38,6 +38,8 @@ INSTALLED_APPS = [
 
     # Local apps
     'services.apps.ServicesConfig',
+
+    'ninja',
 ]
 
 MIDDLEWARE = [

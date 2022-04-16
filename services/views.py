@@ -5,6 +5,7 @@ from django.views.decorators.http import require_POST
 from django.http import HttpResponse, StreamingHttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators import gzip
+from ninja import NinjaAPI
 
 from .transform_track import VideoTransformTrack
 from .utils import predict, gen
@@ -41,11 +42,11 @@ def test(request):
 
 
 pcs = set()
-
+api = NinjaAPI()
 
 @csrf_exempt
-@require_POST
-@async_to_sync
+@api.post("offer/")
+# @async_to_sync
 async def offer(request):
     json_data = json.loads(request.body)
     rtc_session_description = RTCSessionDescription(sdp=json_data['sdp'], type=json_data['type'])
