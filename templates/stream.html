@@ -7,4 +7,12 @@
   <h1 class="mt-2 mb-5 text-center">Анализ динамического видео, полученного с камеры</h1>
   <img src="{% url 'predict_stream' %}" alt="" class="img-fluid rounded mx-auto d-block">
 </div>
+<div class="container">
+  <h3 class="mt-3">Графики распознавания:</h3>
+</div>
+  <p class="highcharts-description">
+  <figure class="highcharts-figure">
+  <div id="container"></div>
+</figure>
+
 {% endblock content %}
