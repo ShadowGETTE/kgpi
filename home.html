@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- // CSS FILES // -->
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="static/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+	<!-- Core Navigation -->
+	<link rel="stylesheet" href="static/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.css">
+	<!-- Navbar Style -->
+	<link rel="stylesheet" href="static/css/navbar-style.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="static/css/animate.css">
+	<!-- Line Icons -->
+	<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+	<!-- LightBox -->
+	<link rel="stylesheet" href="static/js/lightbox/dist/css/lightbox.min.css">
+	<!-- Style -->
+	<link rel="stylesheet" href="static/css/style.css">
+
+	<!--// SITES TITLE // -->
+	<title>Платформа Интеллект - КГПИ КемГу</title>
+
+</head>
+
+<body>
+
+	<!-- ==============================================
+    Preloader
+    =============================================== -->
+
+	<div class="preloader-holder">
+		<div id="loader">
+			<div id="shadow"></div>
+			<div id="box"></div>
+		</div>
+	</div>
+
+	<!-- ==============================================
+    NAVBAR
+    =============================================== -->
+
+	<nav hidden>
+		<div class="nav-header">
+			<!-- Navbar Logo -->
+			<a href="#" class="brand">
+				<img class="scrolled" src="static/img/logo.png" alt="logo">
+				<img class="top" src="static/img/logo.png" alt="logo-scrolled">
+			</a>
+			<!-- Burger Menu -->
+			<button class="toggle-bar">
+				<span class="fa fa-bars"></span>
+			</button>
+		</div>
+		<!-- Navbar Links -->
+
+		<ul class="menu">
+			<li class="scrollspy active"><a href="#home">Главная</a></li>
+			<li class="scrollspy"><a href="#about">О платформе</a></li>
+			<li class="scrollspy"><a href="#portfolio">Инструменты</a></li>
+			<li class="scrollspy"><a href="#services">Распознавание эмоций</a></li>
+			<li class="scrollspy"><a href="#pricing"></a></li>
+			<li class="scrollspy"><a href="#contact"></a></li>
+		</ul>
+	</nav>
+
+	<!-- ==============================================
+    BANNER
+    =============================================== -->
+
+	<section class="slider-area" id="home">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="owl-carousel main-slider">
+					<!-- Single slide 1-->
+					<div class="single-slide slide-bg-1">
+						<div class="col-md-12">
+							<div class="tabel">
+								<div class="tabel-cell">
+									<div class="slider-content">
+										<h3>Платформа КГПИ ФГБОУ ВО "КемГУ"</h3>
+										<h1>РАСПОЗНАВАНИЕ ЭМОЦИЙ</h1>
+										<a href="{% url 'image_process' %}" class="btn btn-transparent">ИМПОРТИРОВАТЬ ИЗОБРАЖЕНИЕ</a>
+										<a href="{% url 'stream_process' %}" class="btn btn-white">ВЕБ-КАМЕРА</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!-- /.single-slide -->
+										<!-- Single slide 1-->
+					<div class="single-slide slide-bg-1">
+						<div class="col-md-12">
+							<div class="tabel">
+								<div class="tabel-cell">
+									<div class="slider-content">
+										<h3>Платформа КГПИ ФГБОУ ВО "КемГУ"</h3>
+										<h1>РАСПОЗНАВАНИЕ ЛИЦ В МАСКАХ</h1>
+										<a href="{% url 'image_process' %}" class="btn btn-transparent">ИМПОРТИРОВАТЬ ИЗОБРАЖЕНИЕ</a>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!-- /.single-slide -->
+				</div><!-- /.main-slider -->
+			</div>
+		</div>
+	</section>
+
+
+	<!-- ==============================================
+    ABOUT US
+    =============================================== -->
+
+	<section id="about">
+		<div class="container">
+			<h2>О платформе</h2>
+			<div class="row">
+				<div class="col-lg-6 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
+					<div class="about-img">
+						<img src="static\img\1.jpg" class="img-fluid" alt="about">
+					</div>
+				</div>
+				<div class="col-lg-6 about-content wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
+					<p>Современные технологии видеоанализа обеспечивают высокий процент распознавания, и уже активно используются в системах СКУД для автоматического доступа на объект, анализ человеческого поведения, контроль масочного режима, выявление подозрительных действий совершаемых человеком, либо для усиления защищенности за счет добавления второго признака авторизации - изображения человека. Это актуально для сфер использования на объектах особо важного назначения, обучения студентов, в аналитических центрах.
+
+</p>
+
+					<div class="skills">
+						<span class="skill">Дизайн</span>
+						<div class="progress">
+							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 90%;">
+								<span>90%</span>
+							</div>
+						</div>
+						<span class="skill">Разработка</span>
+						<div class="progress">
+							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 93%;">
+								<span>93%</span>
+							</div>
+						</div>
+						<span class="skill">Нейронные сети</span>
+						<div class="progress">
+							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 100%;">
+								<span>100%</span>
+							</div>
+						</div>
+						<span class="skill">Удобство работы</span>
+						<div class="progress">
+							<div class="progress-bar progress-bar-primary" role="progressbar" style="width: 90%;">
+								<span>90%</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ==============================================
+    FEATURES
+    =============================================== -->
+
+	<section id="features">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".2s">
+					<div class="feature-box">
+						<span class="lnr lnr-rocket"></span>
+						<h4>Креативный дизайн</h4>
+						<p>Платформа имеет креативный дизайн направленный на удобство работы пользователя с системой.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".4s">
+					<div class="feature-box">
+						<span class="lnr lnr-laptop-phone"></span>
+						<h4>Удобные графики</h4>
+						<p>Вывод данных в виде графиков позволяет быстро анализировать полученные результаты.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 wow fadeInLeft" data-wow-duration=".2s" data-wow-delay=".6s">
+					<div class="feature-box">
+						<span class="lnr lnr-bubble"></span>
+						<h4>Анализ данных</h4>
+						<p>Система сама выведет нужные вам данные.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ==============================================
+    PORTFOLIO
+    =============================================== -->
+
+	<section id="portfolio">
+		<div class="svg-wave">
+			<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 3600 248">
+				<path d="M3601,31.227S2736.31,201.97,1661,72.2C547.345-62.2,0,32.227,0,32.227V343H3602Z"></path>
+			</svg>
+		</div>
+		<div class="container-fluid wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".4s">
+			<h2>Инструменты</h2>
+			<div class="row">
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\1.png" alt="1">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">Tensorflow</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-1" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\2.png" alt="2">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">Keras</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-2" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\3.png" alt="3">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">Open-CV</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-3" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\4.png" alt="4">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">Django</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-4" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\5.png" alt="5">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">Google Table</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-5" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 portfolio-item">
+					<div class="item-img">
+						<img src="static\img\6.png" alt="6">
+					</div>
+					<div class="item-info">
+						<h3 class="heading-3">PLT</h3>
+						<p class="p-text">This handy tool helps you create dummy text for all your layout needs.</p>
+						<a href="https://via.placeholder.com/680x727" data-lightbox="image-6" data-title="Portfolio Item" class="link-text">Full VIew</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ==============================================
+    CALL TO ACTION
+    =============================================== -->
+
+	<!--<section id="call-to-action">
+		<div class="container">
+			<h1 class="wow fadeInDown" data-wow-duration=".2s" data-wow-delay=".4s">Hire Us For Your Next Project.</h1>
+			<a href="#" class="btn btn-transparent wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".6s">Let's Work Together</a>
+		</div>
+	</section>
+
+	<!-- ==============================================
+    SERVICES
+
+
+============================== -->
+
+
+
+
+
+	<!-- ==============================================
+    FOOTER
+    =============================================== -->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p>&copy; 2022 КГПИ ФГБОУ ВО "КемГУ"</p>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+	<!-- // JS FILES // -->
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+	<!-- Core Navigation -->
+	<script src="static/js/corenav-master/corenav-master/dist/coreNavigation-1.1.3.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="static/js/owl.carousel.min.js"></script>
+	<!-- Wow -->
+	<script src="static/js/wow-1.3.0.min.js"></script>
+	<!-- LightBox -->
+	<script src="static/js/lightbox/dist/js/lightbox.min.js"></script>
+	<!-- Custom -->
+	<script src="static/js/custom.js"></script>
+</body>
+
+</html>
