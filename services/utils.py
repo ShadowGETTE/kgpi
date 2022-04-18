@@ -1,13 +1,22 @@
 import base64
-
+import json
+from django.http import JsonResponse
 import cv2
+import csv
 import numpy as np
+import matplotlib.pyplot
+import matplotlib.pyplot as plt
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
+import json
+
+from typing import List
 
 from .constants import cascade_xml_path, emotions
 from .behaviors import load_trained_model, load_face_haar_cascade
+
+prediction = None
 
 
 def predict(image):
@@ -39,6 +48,18 @@ def predict(image):
         # Predict the emotion
         prediction = model.predict(roi)[0]
 
+        with open('static/img/test.csv', 'w', newline='', encoding='utf-8') as myfile:
+            wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+            wr.writerow(['1', 'Злость', 'Отвращение', 'Страх', 'Счастье', 'Грусть', 'Удивление', 'Нейтральное выражение'])
+            wr.writerow(['Эмоция',prediction[0],prediction[1],prediction[2],prediction[3],prediction[4],prediction[5], prediction[6]])
+
+       # with open('static/img/out.json', 'w', encoding='utf-8') as file:
+        #    prediction = np.array(prediction).tolist()
+         #   json.dump(prediction, file)
+        # Show result
+        maxindex = int(np.argmax(prediction))
+        cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255),
+                    2)
         # Show result
         maxindex = int(np.argmax(prediction))
         cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255),
