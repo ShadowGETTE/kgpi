@@ -14,7 +14,7 @@ function createPeerConnection() {
     };
 
     // if (document.getElementById('use-stun').checked) {
-    //     config.iceServers = [{urls: ['stun:stun.l.google.com:19302']}];
+    config.iceServers = [{urls: ['stun:stun.l.google.com:19302']}];
     // }
 
     pc = new RTCPeerConnection(config);
