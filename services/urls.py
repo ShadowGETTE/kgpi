@@ -12,7 +12,7 @@ from .views import (
 )
 
 urlpatterns = [
-    #path('', home, name='home'),
+    path('', home, name='home'),
     path('image/', image_process, name='image_process'),
     path('stream/', stream_process, name='stream_process'),
     path('image/predict/', predict_image, name='predict_image'),
