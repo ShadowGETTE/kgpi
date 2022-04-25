@@ -51,7 +51,14 @@ async def offer(request):
     json_data = json.loads(request.body)
     rtc_session_description = RTCSessionDescription(sdp=json_data['sdp'], type=json_data['type'])
 
-    pc = RTCPeerConnection()
+    pc = RTCPeerConnection(configuration=RTCConfiguration(
+        iceServers=[
+            RTCIceServer(
+                urls='stun:stun.l.google.com:19302'
+            )
+        ]
+    ))
+
     pcs.add(pc)
     recorder = MediaBlackhole()
 
