@@ -29,13 +29,14 @@ class VideoTransformTrack(MediaStreamTrack):
         # perform edge detection
         img = frame.to_ndarray(format="bgr24")
         gray_image = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
-        faces = face_haar_cascade.detectMultiScale(
-            gray_image,
-            scaleFactor=1.3,
-            minNeighbors=5,
-            minSize=(30, 30),
-            flags=cv2.CASCADE_SCALE_IMAGE
-        )
+        # faces = face_haar_cascade.detectMultiScale(
+        #     gray_image,
+        #     scaleFactor=1.3,
+        #     minNeighbors=5,
+        #     minSize=(30, 30),
+        #     flags=cv2.CASCADE_SCALE_IMAGE
+        # )
+        faces = [(0, 0, 0, 0)]
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
             roi = gray_image[y:y + h, x:x + w]
