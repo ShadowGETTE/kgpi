@@ -28,32 +28,38 @@ class VideoTransformTrack(MediaStreamTrack):
         frame = await self.track.recv()
         # perform edge detection
         img = frame.to_ndarray(format="bgr24")
-        gray_image = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
-        faces = face_haar_cascade.detectMultiScale(
-            gray_image,
-            scaleFactor=1.3,
-            minNeighbors=5,
-            minSize=(30, 30),
-            flags=cv2.CASCADE_SCALE_IMAGE
-        )
-        for (x, y, w, h) in faces:
-            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            roi = gray_image[y:y + h, x:x + w]
-            roi = cv2.resize(roi, (64, 64))
-            roi = roi.astype("float") / 255.0
-            roi = img_to_array(roi)
-            roi = np.expand_dims(roi, axis=0)
 
-            prediction = model.predict(roi)[0]
-            print(prediction(roi))
-
-            maxindex = int(np.argmax(prediction))
-            print(maxindex)
-            cv2.putText(img, emotions[maxindex], (int(x) + 10, int(y) - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
-                        (0, 0, 255), 2)
-
-        # rebuild a VideoFrame, preserving timing information
         new_frame = VideoFrame.from_ndarray(img, format="bgr24")
         new_frame.pts = frame.pts
         new_frame.time_base = frame.time_base
         return new_frame
+
+        # gray_image = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+        # faces = face_haar_cascade.detectMultiScale(
+        #     gray_image,
+        #     scaleFactor=1.3,
+        #     minNeighbors=5,
+        #     minSize=(30, 30),
+        #     flags=cv2.CASCADE_SCALE_IMAGE
+        # )
+        # for (x, y, w, h) in faces:
+        #     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        #     roi = gray_image[y:y + h, x:x + w]
+        #     roi = cv2.resize(roi, (64, 64))
+        #     roi = roi.astype("float") / 255.0
+        #     roi = img_to_array(roi)
+        #     roi = np.expand_dims(roi, axis=0)
+        #
+        #     prediction = model.predict(roi)[0]
+        #     print(prediction(roi))
+        #
+        #     maxindex = int(np.argmax(prediction))
+        #     print(maxindex)
+        #     cv2.putText(img, emotions[maxindex], (int(x) + 10, int(y) - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
+        #                 (0, 0, 255), 2)
+        #
+        # # rebuild a VideoFrame, preserving timing information
+        # new_frame = VideoFrame.from_ndarray(img, format="bgr24")
+        # new_frame.pts = frame.pts
+        # new_frame.time_base = frame.time_base
+        # return new_frame
