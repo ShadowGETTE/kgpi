@@ -36,7 +36,7 @@ class VideoTransformTrack(MediaStreamTrack):
         #     minSize=(30, 30),
         #     flags=cv2.CASCADE_SCALE_IMAGE
         # )
-        faces = [(0, 0, 0, 0)]
+        faces = []
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
             roi = gray_image[y:y + h, x:x + w]
