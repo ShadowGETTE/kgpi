@@ -1,20 +1,12 @@
 import base64
-import json
-from django.http import JsonResponse
-import cv2
 import csv
+
+import cv2
 import numpy as np
-import matplotlib.pyplot
-import matplotlib.pyplot as plt
-from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
-from keras.models import load_model
-import json
 
-from typing import List
-
-from .constants import cascade_xml_path, emotions
 from .behaviors import load_trained_model, load_face_haar_cascade
+from .constants import emotions
 
 prediction = None
 
