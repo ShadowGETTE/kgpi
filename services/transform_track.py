@@ -48,7 +48,6 @@ class VideoTransformTrack(MediaStreamTrack):
             roi = np.expand_dims(roi, axis=0)
 
             prediction = model.predict(roi)[0]
-            #print(prediction(roi))
 
             maxindex = int(np.argmax(prediction))
             print(maxindex)
