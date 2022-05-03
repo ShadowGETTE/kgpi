@@ -47,18 +47,11 @@ function negotiate() {
 
         }).then(() => {
             const offer = pc.localDescription;
-            let codec;
-
-            codec = document.getElementById('video-codec').value;
-            if (codec !== 'default') {
-                offer.sdp = sdpFilterCodec('video', codec, offer.sdp);
-            }
 
             return fetch('/api/offer/', {
                 body: JSON.stringify({
                     sdp: offer.sdp,
-                    type: offer.type,
-                    video_transform: 'edges'
+                    type: offer.type
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,8 +66,6 @@ function negotiate() {
 }
 
 function start() {
-    document.getElementById('start').style.display = 'none';
-
     pc = createPeerConnection();
 
     let time_start = null;
@@ -101,43 +92,21 @@ function start() {
 
     const constraints = {
         audio: false,
-        video: false
+        video: true
     };
 
-    if (document.getElementById('use-video').checked) {
-        let resolution = document.getElementById('video-resolution').value;
-        if (resolution) {
-            constraints.video = {
-                width: parseInt('1280', 0),
-                height: parseInt('720', 0)
-            };
-        } else {
-            constraints.video = true;
-        }
-    }
-
-    if (constraints.audio || constraints.video) {
-        if (constraints.video) {
-            document.getElementById('media').style.display = 'block';
-        }
-        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-            stream.getTracks().forEach(track => {
-                pc.addTrack(track, stream);
-            });
-            return negotiate();
-        }, err => {
-            alert('Could not acquire media: ' + err);
+    document.getElementById('media').style.display = 'block';
+    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+        stream.getTracks().forEach(track => {
+            pc.addTrack(track, stream);
         });
-    } else {
-        negotiate();
-    }
-
-    document.getElementById('stop').style.display = 'inline-block';
+        return negotiate();
+    }, err => {
+        alert('Could not acquire media: ' + err);
+    });
 }
 
 function stop() {
-    document.getElementById('stop').style.display = 'none';
-    document.getElementById('start').style.display = 'inline-block';
     // close data channel
     if (dc) {
         dc.close();
