@@ -75,7 +75,7 @@ async def offer(request):
     def on_track(track):
         if track.kind == "video":
             pc.addTrack(
-                VideoTransformTrack(relay.subscribe(track), transform=json_data['video_transform'])
+                VideoTransformTrack(relay.subscribe(track))
             )
 
         @track.on("ended")
