@@ -58,7 +58,7 @@ class VideoTransformTrack(MediaStreamTrack):
 
             prediction = model.predict(roi)[0]
             print('123145')
-            print(prediction(roi))
+            #print(prediction(roi))
             print('123146')
 
             maxindex = int(np.argmax(prediction))
