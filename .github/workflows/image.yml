@@ -1,0 +1,52 @@
+name: image
+
+on:
+  push:
+    branches:
+      - 'main'
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  Image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      -
+        name: Set short commit hash in env
+        run: echo "COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+      -
+        name: Set repo name
+        run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk '{print tolower($0)}')" >> $GITHUB_ENV
+      -
+        name: Echo repo name
+        run: echo '${{ github.repository }}'
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.COMMIT_SHA }}
+            ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:latest
