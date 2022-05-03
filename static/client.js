@@ -13,9 +13,7 @@ function createPeerConnection() {
         sdpSemantics: 'unified-plan'
     };
 
-    // if (document.getElementById('use-stun').checked) {
     config.iceServers = [{urls: ['stun:stun.l.google.com:19302']}];
-    // }
 
     pc = new RTCPeerConnection(config);
 
@@ -109,10 +107,7 @@ function start() {
     if (document.getElementById('use-video').checked) {
         let resolution = document.getElementById('video-resolution').value;
         if (resolution) {
-            resolution = resolution.split('x');
             constraints.video = {
-                // width: parseInt(resolution[0], 0),
-                // height: parseInt(resolution[1], 0)
                 width: parseInt('1280', 0),
                 height: parseInt('720', 0)
             };
@@ -168,4 +163,4 @@ function stop() {
     }, 500);
 }
 
-start(); //autostart
+start();
