@@ -38,22 +38,36 @@ class VideoTransformTrack(MediaStreamTrack):
             minSize=(30, 30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
+
+        print('12314fdsdfasf')
         for (x, y, w, h) in faces:
+            print('1')
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            print('12')
             roi = gray_image[y:y + h, x:x + w]
+            print('123')
             #roi = img[y:y + h, x:x + w]
             roi = cv2.resize(roi, (64, 64))
+            print('1231')
             roi = roi.astype("float") / 255.0
+            print('12312')
             roi = img_to_array(roi)
+            print('12313')
             roi = np.expand_dims(roi, axis=0)
+            print('12314')
 
             prediction = model.predict(roi)[0]
+            print('123145')
             print(prediction(roi))
+            print('123146')
 
             maxindex = int(np.argmax(prediction))
+            print('123147')
             print(maxindex)
             cv2.putText(img, emotions[maxindex], (int(x) + 10, int(y) - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
                         (0, 0, 255), 2)
+
+            print('12318')
 
         # rebuild a VideoFrame, preserving timing information
         new_frame = VideoFrame.from_ndarray(img, format="bgr24")
