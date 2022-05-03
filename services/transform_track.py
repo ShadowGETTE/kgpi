@@ -31,7 +31,6 @@ class VideoTransformTrack(MediaStreamTrack):
         gray_image = np.dot(img[...,::-1], [0.299, 0.587, 0.114]).astype(np.uint8)
         faces = face_haar_cascade.detectMultiScale(
             gray_image,
-            #img,
             scaleFactor=1.3,
             minNeighbors=5,
             minSize=(30, 30),
@@ -41,7 +40,6 @@ class VideoTransformTrack(MediaStreamTrack):
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
             roi = gray_image[y:y + h, x:x + w]
-            #roi = img[y:y + h, x:x + w]
             roi = cv2.resize(roi, (64, 64))
             roi = roi.astype("float") / 255.0
             roi = img_to_array(roi)
@@ -56,7 +54,6 @@ class VideoTransformTrack(MediaStreamTrack):
 
         # rebuild a VideoFrame, preserving timing information
         new_frame = VideoFrame.from_ndarray(img, format="bgr24")
-        #new_frame = VideoFrame.from_ndarray(gray_image, format="bgr24")
         new_frame.pts = frame.pts
         new_frame.time_base = frame.time_base
         return new_frame
