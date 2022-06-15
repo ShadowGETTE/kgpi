@@ -53,9 +53,9 @@ def predict(image):
         cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255),
                     2)
         # Show result
-        maxindex = int(np.argmax(prediction))
-        cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255),
-                    2)
+        # maxindex = int(np.argmax(prediction))
+        # cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255),
+        #             2)
 
     retval, buffer = cv2.imencode('.jpg', image)
     data = base64.b64encode(buffer.tobytes())
