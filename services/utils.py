@@ -1,5 +1,5 @@
 import base64
-import csv
+from math import ceil
 
 import cv2
 import numpy as np
@@ -8,7 +8,23 @@ from keras.preprocessing.image import img_to_array
 from .behaviors import load_trained_model, load_face_haar_cascade
 from .constants import emotions
 
+from dataclasses import dataclass
+
 prediction = None
+
+
+@dataclass(frozen=True)
+class EmojiStatistic:
+    angry: float
+    disgusted: float
+    fearful: float
+    happy: float
+    sad: float
+    surprised: float
+    neutral: float
+
+    def __json__(self):
+        return self.__dict__
 
 
 def predict(image):
@@ -29,6 +45,9 @@ def predict(image):
         minSize=(30, 30),
         flags=cv2.CASCADE_SCALE_IMAGE
     )
+
+    statistic = None
+
     for (x, y, w, h) in faces:
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
         roi = gray_image[y:y + h, x:x + w]
@@ -40,27 +59,25 @@ def predict(image):
         # Predict the emotion
         prediction = model.predict(roi)[0]
 
-        with open('static/img/test.csv', 'w', newline='', encoding='utf-8') as myfile:
-            wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-            wr.writerow(['1', 'Злость', 'Отвращение', 'Страх', 'Счастье', 'Грусть', 'Удивление', 'Нейтральное выражение'])
-            wr.writerow(['Эмоция',prediction[0],prediction[1],prediction[2],prediction[3],prediction[4],prediction[5], prediction[6]])
+        statistic = EmojiStatistic(
+            angry=float(ceil(prediction[0] * 100) / 100),
+            disgusted=float(ceil(prediction[1] * 100) / 100),
+            fearful=float(ceil(prediction[2] * 100) / 100),
+            happy=float(ceil(prediction[3] * 100) / 100),
+            sad=float(ceil(prediction[4] * 100) / 100),
+            surprised=float(ceil(prediction[5] * 100) / 100),
+            neutral=float(ceil(prediction[6] * 100) / 100)
+        )
 
-       # with open('static/img/out.json', 'w', encoding='utf-8') as file:
-        #    prediction = np.array(prediction).tolist()
-         #   json.dump(prediction, file)
         # Show result
         maxindex = int(np.argmax(prediction))
         cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255),
                     2)
-        # Show result
-        # maxindex = int(np.argmax(prediction))
-        # cv2.putText(image, emotions[maxindex], (int(x) + 10, int(y) + 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255),
-        #             2)
 
     retval, buffer = cv2.imencode('.jpg', image)
     data = base64.b64encode(buffer.tobytes())
     data = data.decode()
-    return data
+    return data, statistic
 
 
 def gen(camera):

@@ -1,23 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const options = {
-    chart: {
-        type: 'column',
-        zoomType: 'xy'
-    },
-    title: {
-        text: 'График'
-    },
-        yAxis: {
-        min: 0,
+        chart: {
+            type: 'column',
+            zoomType: 'xy'
+        },
         title: {
-            text: 'Коэффициент эмоции (%)'
+            text: 'График'
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Коэффициент эмоции (%)'
+            }
+        },
+        legend: {
+            enabled: false
         }
-    },
-    };
-    options.data = {
-        csvURL: '/static/img/test.csv',
-        enablePolling: true,
-        dataRefreshRate: 1
     };
 
     Highcharts.chart('container', options);

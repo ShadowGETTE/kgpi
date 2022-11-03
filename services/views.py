@@ -11,9 +11,14 @@ from .transform_track import VideoTransformTrack
 from .utils import predict, gen
 from .camera import VideoCamera
 
-from asgiref.sync import async_to_sync
-
 import json
+
+def wrapped_default(self, obj):
+    return getattr(obj.__class__, '__json__', wrapped_default.default)(obj)
+wrapped_default.default = json.JSONEncoder().default
+
+json.JSONEncoder.original_default = json.JSONEncoder.default
+json.JSONEncoder.default = wrapped_default
 
 
 def home(request):
@@ -46,7 +51,6 @@ api = NinjaAPI()
 
 @csrf_exempt
 @api.post("offer/")
-# @async_to_sync
 async def offer(request):
     json_data = json.loads(request.body)
     rtc_session_description = RTCSessionDescription(sdp=json_data['sdp'], type=json_data['type'])
@@ -98,5 +102,11 @@ async def offer(request):
 @require_POST
 def predict_image(request):
     image = request.FILES.get('image')
-    result = predict(image)
-    return HttpResponse(result, content_type='image/jpeg')
+    data, statistic = predict(image)
+    response = {
+        "image": data,
+        "title": image.name,
+        "statistic": statistic,
+    }
+    response = json.dumps(response)
+    return HttpResponse(response, content_type='application/json')
