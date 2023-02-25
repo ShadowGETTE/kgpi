@@ -59,6 +59,16 @@ async def offer(request):
         iceServers=[
             RTCIceServer(
                 urls='stun:stun.l.google.com:19302'
+            ),
+            RTCIceServer(
+                urls='turn:135.181.243.125:3478?transport=udp',
+                username='user-1',
+                credential='pass-1'
+            ),
+            RTCIceServer(
+                url='turn:turn.anyfirewall.com:443?transport=tcp',
+                credential='webrtc',
+                username='webrtc'
             )
         ]
     ))
