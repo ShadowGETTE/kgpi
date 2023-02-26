@@ -36,7 +36,7 @@ function createPeerConnection() {
         {url: 'stun:stun.voxgratia.org'},
         {url: 'stun:stun.xten.com'},
     ];
-    config.iceTransportPolicy = "relay";
+    // config.iceTransportPolicy = "relay";
 
     pc = new RTCPeerConnection(config);
 
