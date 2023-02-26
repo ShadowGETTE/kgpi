@@ -15,7 +15,9 @@ function createPeerConnection() {
 
     config.iceServers = [
         {
-            url: 'turn:135.181.237.91:3478?transport=udp'
+            url: 'turn:135.181.237.91:3478?transport=udp',
+            username: 'test',
+            credential: 'test123'
         }
     ];
     // config.iceTransportPolicy = "relay";

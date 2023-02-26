@@ -59,7 +59,9 @@ async def offer(request):
         configuration=RTCConfiguration(
             iceServers=[
                 RTCIceServer(
-                    urls='turn:135.181.237.91:3478?transport=udp'
+                    urls='turn:135.181.237.91:3478?transport=udp',
+                    username='test',
+                    credential='test123'
                 )
             ]
         )
