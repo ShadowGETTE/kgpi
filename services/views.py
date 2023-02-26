@@ -102,7 +102,7 @@ async def offer(request):
 
     # send answer
     answer = await pc.createAnswer()
-    await pc.setRemoteDescription(rtc_session_description)
+    # await pc.setRemoteDescription(rtc_session_description)
     await pc.setLocalDescription(answer)
 
     return JsonResponse({"sdp": pc.localDescription.sdp, "type": pc.localDescription.type})
