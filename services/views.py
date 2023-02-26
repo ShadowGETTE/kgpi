@@ -83,7 +83,7 @@ async def offer(request):
                 RTCIceServer(urls='stun:stun.voipbuster.com'),
                 RTCIceServer(urls='stun:stun.voipstunt.com'),
                 RTCIceServer(urls='stun:stun.voxgratia.org'),
-                RTCIceServer(urls='stun:stun.xten.com')
+                RTCIceServer(urls='stun:stun.xten.com'),
                 RTCIceServer(
                     urls='turn:turn.anyfirewall.com:443?transport=tcp',
                     credential='webrtc',
