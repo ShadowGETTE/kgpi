@@ -66,7 +66,7 @@ async def offer(request):
                 credential='pass-1'
             ),
             RTCIceServer(
-                url='turn:turn.anyfirewall.com:443?transport=tcp',
+                urls='turn:turn.anyfirewall.com:443?transport=tcp',
                 credential='webrtc',
                 username='webrtc'
             )
