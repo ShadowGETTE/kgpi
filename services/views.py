@@ -57,9 +57,9 @@ async def offer(request):
 
     pc = RTCPeerConnection(configuration=RTCConfiguration(
         iceServers=[
-            # RTCIceServer(
-            #     urls='stun:stun.l.google.com:19302'
-            # ),
+            RTCIceServer(
+                urls='stun:stun.l.google.com:19302'
+            ),
             RTCIceServer(
                 urls='turn:135.181.243.125:3478?transport=udp',
                 username='user-1',

@@ -14,10 +14,9 @@ function createPeerConnection() {
     };
 
     config.iceServers = [
-        // {
-        //     url: 'stun:stun.l.google.com:19302'
-        // },
-        //
+        {
+            url: 'stun:stun.l.google.com:19302'
+        },
         {
             url: 'turn:135.181.243.125:3478?transport=udp',
             username: 'user-1',
