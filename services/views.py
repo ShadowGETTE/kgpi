@@ -59,35 +59,7 @@ async def offer(request):
         configuration=RTCConfiguration(
             iceServers=[
                 RTCIceServer(
-                    urls='stun:stun.l.google.com:19302'
-                ),
-                RTCIceServer(
-                    urls='turn:135.181.243.125:3478?transport=udp',
-                    username='user-1',
-                    credential='pass-1'
-                ),
-                RTCIceServer(urls='stun:stun1.l.google.com:19302'),
-                RTCIceServer(urls='stun:stun2.l.google.com:19302'),
-                RTCIceServer(urls='stun:stun3.l.google.com:19302'),
-                RTCIceServer(urls='stun:stun4.l.google.com:19302'),
-                RTCIceServer(urls='stun:stun01.sipphone.com'),
-                RTCIceServer(urls='stun:stun.ekiga.net'),
-                RTCIceServer(urls='stun:stun.fwdnet.net'),
-                RTCIceServer(urls='stun:stun.ideasip.com'),
-                RTCIceServer(urls='stun:stun.iptel.org'),
-                RTCIceServer(urls='stun:stun.rixtelecom.se'),
-                RTCIceServer(urls='stun:stun.schlund.de'),
-                RTCIceServer(urls='stun:stunserver.org'),
-                RTCIceServer(urls='stun:stun.softjoys.com'),
-                RTCIceServer(urls='stun:stun.voiparound.com'),
-                RTCIceServer(urls='stun:stun.voipbuster.com'),
-                RTCIceServer(urls='stun:stun.voipstunt.com'),
-                RTCIceServer(urls='stun:stun.voxgratia.org'),
-                RTCIceServer(urls='stun:stun.xten.com'),
-                RTCIceServer(
-                    urls='turn:turn.anyfirewall.com:443?transport=tcp',
-                    credential='webrtc',
-                    username='webrtc'
+                    urls='turn:135.181.237.91:3478?transport=udp'
                 )
             ]
         )
